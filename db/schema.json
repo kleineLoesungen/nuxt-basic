@@ -1,0 +1,23 @@
+{
+  "tables": {
+    "users": {
+      "columns": {
+        "id": { "type": "integer", "primary": true, "autoIncrement": true },
+        "username": { "type": "string", "unique": true, "nullable": false },
+        "email": { "type": "string", "unique": true, "nullable": false },
+        "password": { "type": "string", "nullable": false },
+        "created_at": { "type": "datetime", "default": "CURRENT_TIMESTAMP" }
+      }
+    },
+    "posts": {
+      "columns": {
+        "id": { "type": "integer", "primary": true, "autoIncrement": true },
+        "user_id": { "type": "integer", "references": { "table": "users", "column": "id" }, "nullable": false },
+        "title": { "type": "string", "nullable": false },
+        "content": { "type": "text", "nullable": false },
+        "published": { "type": "boolean", "default": false },
+        "created_at": { "type": "datetime", "default": "CURRENT_TIMESTAMP" }
+      }
+    }
+  }
+} 
