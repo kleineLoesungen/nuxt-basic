@@ -1,23 +1,22 @@
+// db/scripts/inspect.ts
+import 'dotenv/config'
 import { fileURLToPath } from 'url'
-import path from 'path'
 import { getDriver } from '@/db/index'
 
 async function inspect() {
   const driver = await getDriver()
 
-  const tables = await driver.query(
-    `SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%' ORDER BY name`
-  )
+  const tables = await driver.getTableNames()
 
   if (tables.length === 0) {
     console.log('⚠️ Keine Tabellen gefunden.')
     return
   }
 
-  for (const { name } of tables) {
+  for (const name of tables) {
     console.log(`🧱 Tabelle: ${name}`)
 
-    const columns = await driver.query(`PRAGMA table_info(${name})`)
+    const columns = await driver.getTableColumns(name)
     for (const col of columns) {
       const attributes = []
       if (col.pk) attributes.push('PRIMARY KEY')
@@ -28,10 +27,9 @@ async function inspect() {
       console.log(`  - ${col.name}: ${col.type}${attributes.length ? ' | ' + attributes.join(', ') : ''}`)
     }
 
-    const result = await driver.query(`SELECT COUNT(*) as count FROM ${name}`)
-    console.log(`  🔢 Einträge: ${result[0].count}\n`)
+    const count = await driver.countRows(name)
+    console.log(`  🔢 Einträge: ${count}\n`)
   }
-
 }
 
 const isDirectExecution = process.argv[1] === fileURLToPath(import.meta.url)

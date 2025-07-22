@@ -2,7 +2,6 @@
 import { getDriver } from '@/db/index'
 
 export default defineEventHandler(async () => {
-    console.log('>> Lädt _db API handler')
     const driver = await getDriver()
     await driver.connect()
 

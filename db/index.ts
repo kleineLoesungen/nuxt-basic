@@ -1,13 +1,12 @@
 import type { DatabaseDriver } from '../types/db.ts'
+import { drivers } from './drivers'
 
 export async function getDriver(): Promise<DatabaseDriver> {
   const dbUrl = process.env.DB_URL || 'sqlite://./data.db'
-  console.log('>> Lade Driver für:', dbUrl)
   const scheme = dbUrl.split(':')[0]
-  try {
-    const driverModule = await import(`./drivers/${scheme}.ts`)
-    return driverModule.default as DatabaseDriver
-  } catch (e) {
-    throw new Error(`No driver found for scheme: ${scheme}`)
-  }
+
+  const driver = drivers[scheme as keyof typeof drivers]
+  if (!driver) throw new Error(`No driver found for scheme: ${scheme}`)
+
+  return driver
 }

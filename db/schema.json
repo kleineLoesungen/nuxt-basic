@@ -14,7 +14,7 @@
         "id": { "type": "integer", "primary": true, "autoIncrement": true },
         "user_id": { "type": "integer", "references": { "table": "users", "column": "id" }, "nullable": false },
         "title": { "type": "string", "nullable": false },
-        "content": { "type": "text", "nullable": false },
+        "content": { "type": "text", "nullable": true },
         "published": { "type": "boolean", "default": false },
         "created_at": { "type": "datetime", "default": "CURRENT_TIMESTAMP" }
       }

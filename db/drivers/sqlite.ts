@@ -1,4 +1,5 @@
 import Database from 'better-sqlite3'
+import type { DatabaseDriver, ColumnInfo } from '@/types/db'
 
 const dbUrl = process.env.DB_URL || 'sqlite://./data.db'
 const match = dbUrl.match(/^sqlite:\/\/(.+)$/)
@@ -14,7 +15,7 @@ async function connect(): Promise<Database.Database> {
   return db
 }
 
-async function query<T>(sql: string, params?: any[]): Promise<T[]> {
+async function query<T = any>(sql: string, params?: any[]): Promise<T[]> {
   const database = await connect()
   const stmt = database.prepare(sql)
   return params ? stmt.all(...params) : stmt.all()
@@ -32,11 +33,30 @@ async function close(): Promise<void> {
   }
 }
 
-const sqliteDriver = {
+async function getTableNames(): Promise<string[]> {
+  const rows = await query<{ name: string }>(
+    `SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'`
+  )
+  return rows.map(r => r.name)
+}
+
+async function getTableColumns(table: string): Promise<ColumnInfo[]> {
+  return await query<ColumnInfo>(`PRAGMA table_info(${table})`)
+}
+
+async function countRows(table: string): Promise<number> {
+  const rows = await query<{ count: number }>(`SELECT COUNT(*) as count FROM ${table}`)
+  return rows[0]?.count || 0
+}
+
+const sqliteDriver: DatabaseDriver = {
   connect,
   query,
   exec,
-  close
+  close,
+  getTableNames,
+  getTableColumns,
+  countRows
 }
 
-export default sqliteDriver 
+export default sqliteDriver
