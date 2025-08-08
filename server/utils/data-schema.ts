@@ -1,13 +1,22 @@
 import { z } from 'zod'
 
 export const dataSchemas = {
-  app: z.array(z.any()),
+  app: z.any(),
   config: z.any(),
-  user: z.object({
+  users: z.array(z.object({
     id: z.number(),
     name: z.string(),
-    password_hash: z.string()
-  })
+    email: z.string().optional().default(''),
+    password_hash: z.string(),
+    bearer_tokens: z.array(
+      z.object({
+        name: z.string(),
+        hash: z.string()
+      })
+    ).optional().default([]),
+    content: z.any()
+  }))
+
 } as const
 
 export type DataSchemaKey = keyof typeof dataSchemas

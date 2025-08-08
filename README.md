@@ -1,6 +1,11 @@
 # Starter-Kit Nuxt-App
 ## Features
-### PostgresSQL Database
+
+### General Configuration
+- nuxt 3
+- tailwindcss support
+
+### PostgresSQL Database Driver
 #### Files
 - `server/db/client.ts` - db connector
 - `server/db/init.ts` & `server/plugins.init-db.ts` - insert/update app_\<env.APP_ID> table (schema: `key: string, data: jsonb`)
@@ -17,6 +22,5 @@ PG_HOST, PG_PORT (psql: 5432), PG_USER, PG_PASSWORD, PG_DATABASE, APP_ID
 
 ### Next
 - bearer auth
-- basic auth
-- tailwind.css
+- basic auth TODO: NEXT
 - default layout
