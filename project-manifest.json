@@ -1,0 +1,219 @@
+{
+  "name": "nuxt-app",
+  "nodeVersion": "unbekannt",
+  "frameworks": [],
+  "flags": {
+    "hasTS": true,
+    "hasESLint": false,
+    "hasPrettier": false,
+    "hasDocker": false,
+    "hasCI": false
+  },
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.11",
+    "nuxt": "^3.17.7",
+    "pg": "^8.16.3",
+    "tailwindcss": "^4.1.11",
+    "vue": "^3.5.17",
+    "vue-router": "^4.5.1",
+    "zod": "^4.0.15"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.15.5"
+  },
+  "tree": [
+    {
+      "type": "file",
+      "path": "README.md",
+      "size": 742
+    },
+    {
+      "type": "dir",
+      "path": "assets"
+    },
+    {
+      "type": "dir",
+      "path": "assets/css"
+    },
+    {
+      "type": "file",
+      "path": "assets/css/main.css",
+      "size": 22
+    },
+    {
+      "type": "dir",
+      "path": "layouts"
+    },
+    {
+      "type": "file",
+      "path": "layouts/default.vue",
+      "size": 2309
+    },
+    {
+      "type": "file",
+      "path": "nuxt.config.ts",
+      "size": 295
+    },
+    {
+      "type": "file",
+      "path": "package-lock.json",
+      "size": 438957
+    },
+    {
+      "type": "file",
+      "path": "package.json",
+      "size": 493
+    },
+    {
+      "type": "dir",
+      "path": "pages"
+    },
+    {
+      "type": "file",
+      "path": "pages/index.vue",
+      "size": 34
+    },
+    {
+      "type": "dir",
+      "path": "public"
+    },
+    {
+      "type": "file",
+      "path": "public/favicon.ico",
+      "size": 4286
+    },
+    {
+      "type": "file",
+      "path": "public/project-manifest.json",
+      "size": 755
+    },
+    {
+      "type": "file",
+      "path": "public/robots.txt",
+      "size": 24
+    },
+    {
+      "type": "dir",
+      "path": "server"
+    },
+    {
+      "type": "dir",
+      "path": "server/api"
+    },
+    {
+      "type": "dir",
+      "path": "server/api/data"
+    },
+    {
+      "type": "file",
+      "path": "server/api/data/[key].get.ts",
+      "size": 740
+    },
+    {
+      "type": "file",
+      "path": "server/api/data/[key].post.ts",
+      "size": 677
+    },
+    {
+      "type": "file",
+      "path": "server/api/keys.get.ts",
+      "size": 217
+    },
+    {
+      "type": "dir",
+      "path": "server/db"
+    },
+    {
+      "type": "file",
+      "path": "server/db/client.ts",
+      "size": 541
+    },
+    {
+      "type": "file",
+      "path": "server/db/init.ts",
+      "size": 985
+    },
+    {
+      "type": "dir",
+      "path": "server/plugins"
+    },
+    {
+      "type": "file",
+      "path": "server/plugins/init-db.ts",
+      "size": 166
+    },
+    {
+      "type": "file",
+      "path": "server/tsconfig.json",
+      "size": 49
+    },
+    {
+      "type": "dir",
+      "path": "server/utils"
+    },
+    {
+      "type": "file",
+      "path": "server/utils/data-schema.ts",
+      "size": 553
+    },
+    {
+      "type": "file",
+      "path": "server/utils/db.ts",
+      "size": 833
+    },
+    {
+      "type": "file",
+      "path": "starter-prompt.js",
+      "size": 10104
+    },
+    {
+      "type": "file",
+      "path": "tsconfig.json",
+      "size": 292
+    }
+  ],
+  "exportsIndex": {
+    "starter-prompt.js": [
+      "Bar",
+      "a",
+      "c",
+      "foo"
+    ],
+    "server/db/init.ts": [
+      "ensureAppTableExists",
+      "getAppTableName"
+    ],
+    "server/utils/db.ts": [
+      "db"
+    ],
+    "server/utils/data-schema.ts": [
+      "dataSchemas"
+    ],
+    "server/db/client.ts": [
+      "getPgPool"
+    ]
+  },
+  "routesIndex": {
+    "starter-prompt.js": [
+      {
+        "method": "GET",
+        "path": "/foo"
+      }
+    ]
+  },
+  "env": [
+    "APP_ID",
+    "PG_DATABASE",
+    "PG_HOST",
+    "PG_PASSWORD",
+    "PG_PORT",
+    "PG_USER"
+  ]
+}

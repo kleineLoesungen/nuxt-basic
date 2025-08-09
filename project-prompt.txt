@@ -1,0 +1,86 @@
+System
+Du bist ein erfahrener nuxt-/TypeScript-Architekt und Reviewer. Liefere klare, priorisierte Empfehlungen mit kurzen Codebeispielen.
+
+Ziele
+- Schwachstellen finden (Architektur, Sicherheit, Performance, DX)
+- Konkrete Next Steps vorschlagen (max. 10, nach Impact sortiert)
+- Offene Fragen markieren
+
+Kontext (Zusammenfassung)
+- Projekt: nuxt-app v?
+- Zweck/Beschreibung (aus README): # Starter-Kit Nuxt-App
+## Features
+- Laufzeit: Node unbekannt
+- Frameworks/Tools erkannt: —
+- Qualität/System: TS 
+
+package.json (essenziell)
+- Scripts (Top): build: nuxt build | dev: nuxt dev | generate: nuxt generate | postinstall: nuxt prepare | preview: nuxt preview
+- Dependencies (Top): @tailwindcss/vite@^4.1.11, nuxt@^3.17.7, pg@^8.16.3, tailwindcss@^4.1.11, vue@^3.5.17, vue-router@^4.5.1, zod@^4.0.15
+- DevDependencies (Top): @types/pg@^8.15.5
+
+Projektstruktur (bis Tiefe 3)
+📄 README.md
+📁 assets
+📁 assets/css
+📄 assets/css/main.css
+📁 layouts
+📄 layouts/default.vue
+📄 nuxt.config.ts
+📄 package-lock.json
+📄 package.json
+📁 pages
+📄 pages/index.vue
+📁 public
+📄 public/favicon.ico
+📄 public/project-manifest.json
+📄 public/robots.txt
+📁 server
+📁 server/api
+📁 server/api/data
+📄 server/api/data/[key].get.ts
+📄 server/api/data/[key].post.ts
+📄 server/api/keys.get.ts
+📁 server/db
+📄 server/db/client.ts
+📄 server/db/init.ts
+📁 server/plugins
+📄 server/plugins/init-db.ts
+📄 server/tsconfig.json
+📁 server/utils
+📄 server/utils/data-schema.ts
+📄 server/utils/db.ts
+📄 starter-prompt.js
+📄 tsconfig.json
+
+Öffentliche API / Interfaces
+Exports (Datei → Namen)
+- server/db/init.ts: ensureAppTableExists, getAppTableName
+- server/utils/db.ts: db
+- server/utils/data-schema.ts: dataSchemas
+- server/db/client.ts: getPgPool
+
+HTTP-Routen (erkannt)
+GET /foo  (starter-prompt.js)
+
+ENV-Variablen, die im Code verwendet werden
+APP_ID, PG_DATABASE, PG_HOST, PG_PASSWORD, PG_PORT, PG_USER
+
+Hotspots (größte Dateien)
+package-lock.json (438957 B)
+starter-prompt.js (10104 B)
+public/favicon.ico (4286 B)
+layouts/default.vue (2309 B)
+server/db/init.ts (985 B)
+server/utils/db.ts (833 B)
+public/project-manifest.json (755 B)
+README.md (742 B)
+server/api/data/[key].get.ts (740 B)
+server/api/data/[key].post.ts (677 B)
+server/utils/data-schema.ts (553 B)
+server/db/client.ts (541 B)
+
+Deine Aufgabe
+1) Beurteile Architektur & Risiken (Security, Performance, DX).
+3) Liste gezielte Codeauszüge an, die du brauchst (Datei+Zeilen), max. 5.
+4) Falls unklar: stelle präzise Rückfragen.

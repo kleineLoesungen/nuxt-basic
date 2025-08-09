@@ -1,1 +1,8 @@
 @import "tailwindcss";
+
+@theme {
+  --color-brand: #2563eb;
+  --color-on-brand: #ffffff;
+  --color-surface: #ffffff;
+  --color-on-surface: #0f172a; /* slate-900 */
+}

@@ -1,21 +1,22 @@
 // server/db/client.ts
 import { Pool } from 'pg'
 
-let pool: Pool | null = null
+let _pool: Pool | undefined
 
-export const getPgPool = () => {
-  if (!pool) {
-    pool = new Pool({
-      host: process.env.PG_HOST || 'localhost',
-      port: parseInt(process.env.PG_PORT || '5432'),
-      user: process.env.PG_USER || 'postgres',
-      password: process.env.PG_PASSWORD || '',
-      database: process.env.PG_DATABASE || 'mydb',
-      max: 10, // Maximale Anzahl gleichzeitiger Verbindungen im Pool
-    })
+export function getPgPool() {
+  if (_pool) return _pool
 
-    console.log('PostgreSQL pool initialized')
-  }
+  _pool = new Pool({
+    host: process.env.PG_HOST,
+    port: process.env.PG_PORT ? Number(process.env.PG_PORT) : undefined,
+    user: process.env.PG_USER,
+    password: process.env.PG_PASSWORD,
+    database: process.env.PG_DATABASE,
+    ssl: process.env.PG_SSL === 'true' ? { rejectUnauthorized: true } : false,
+    max: 10,
+    idleTimeoutMillis: 30_000,
+    connectionTimeoutMillis: 5_000,
+  })
 
-  return pool
+  return _pool
 }

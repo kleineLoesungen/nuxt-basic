@@ -1,3 +1,4 @@
+// server/utils/db.ts
 import { getPgPool } from '../db/client'
 import { getAppTableName } from '../db/init'
 

@@ -1,0 +1,48 @@
+{
+  "nodeVersion": "unbekannt",
+  "frameworks": [],
+  "flags": {
+    "hasTS": false,
+    "hasESLint": false,
+    "hasPrettier": false,
+    "hasDocker": false,
+    "hasCI": false
+  },
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {},
+  "tree": [
+    {
+      "type": "file",
+      "path": "favicon.ico",
+      "size": 4286
+    },
+    {
+      "type": "file",
+      "path": "robots.txt",
+      "size": 24
+    },
+    {
+      "type": "file",
+      "path": "starter-prompt.js",
+      "size": 10104
+    }
+  ],
+  "exportsIndex": {
+    "starter-prompt.js": [
+      "Bar",
+      "a",
+      "c",
+      "foo"
+    ]
+  },
+  "routesIndex": {
+    "starter-prompt.js": [
+      {
+        "method": "GET",
+        "path": "/foo"
+      }
+    ]
+  },
+  "env": []
+}

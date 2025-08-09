@@ -9,5 +9,18 @@ export default defineNuxtConfig({
     plugins: [
       tailwindcss(),
     ],
-  },
+  }/*,
+  nitro: {
+    routeRules: {
+      '/**': {
+        headers: {
+          'Content-Security-Policy': "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:",
+          'Referrer-Policy': 'no-referrer',
+          'X-Content-Type-Options': 'nosniff',
+          'Cross-Origin-Opener-Policy': 'same-origin',
+          'Cross-Origin-Resource-Policy': 'same-origin',
+        }
+      }
+    }
+  }*/
 })
